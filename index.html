@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram User Info</title>
+</head>
+<body>
+    <h1>مرحبًا!</h1>
+    <p id="user-info">جارٍ تحميل بيانات المستخدم...</p>
+
+    <script>
+        // التحقق من أن بيانات Telegram متوفرة
+        if (window.Telegram.WebApp) {
+            const user = Telegram.WebApp.initDataUnsafe.user;
+            
+            if (user) {
+                document.getElementById("user-info").innerText = يا عم صلاح جاهز حسابك، ${user.first_name} (${user.username});
+            } else {
+                document.getElementById("user-info").innerText = "لم يتم العثور على بيانات المستخدم!";
+            }
+        } else {
+            document.getElementById("user-info").innerText = "Telegram Web App غير مدعوم!";
+        }
+    </script>
+</body>
+</html>
